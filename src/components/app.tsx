@@ -3,6 +3,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { MainAppBar } from "./main-app-bar";
 import { ThemeContext } from "../context/theme-context";
 import { useContext } from "react";
+import { HashRouter, Switch, Route } from "react-router-dom";
+import { Home } from "../pages/home";
+import { Packages } from "../pages/packages";
 
 export const App: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
@@ -19,8 +22,18 @@ export const App: React.FunctionComponent = () => {
         background: theme.palette.background.default
       }}
     >
-      <CssBaseline />
-      <MainAppBar />
+      <HashRouter>
+        <CssBaseline />
+        <MainAppBar />
+        <Switch>
+          <Route path="/packages">
+            <Packages />
+          </Route>
+          <Route>
+            <Home />
+          </Route>
+        </Switch>
+      </HashRouter>
     </div>
   );
 };
