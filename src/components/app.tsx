@@ -25,14 +25,29 @@ export const App: React.FunctionComponent = () => {
       <HashRouter>
         <CssBaseline />
         <MainAppBar />
-        <Switch>
-          <Route path="/packages">
-            <Packages />
-          </Route>
-          <Route>
-            <Home />
-          </Route>
-        </Switch>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            overflow: "hidden"
+          }}
+        >
+          <div
+            style={{
+              margin: "1em",
+              overflow: "auto"
+            }}
+          >
+            <Switch>
+              <Route path="/packages">
+                <Packages />
+              </Route>
+              <Route>
+                <Home />
+              </Route>
+            </Switch>
+          </div>
+        </div>
       </HashRouter>
     </div>
   );
