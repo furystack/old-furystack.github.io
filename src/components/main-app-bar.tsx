@@ -42,6 +42,17 @@ export const MainAppBar: React.FunctionComponent = () => {
             flexGrow: 0
           }}
         >
+          <Link
+            to="/packages"
+            title="Packages"
+            style={{
+              textDecoration: "none",
+              marginRight: "0.5em",
+              fontSize: "1.5em"
+            }}
+          >
+            📦
+          </Link>
           <a
             title="See more on GitHub"
             href="https://github.com/furystack/furystack"

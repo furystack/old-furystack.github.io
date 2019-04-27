@@ -14,7 +14,7 @@ export const Home: React.FunctionComponent = () => {
         services fast and easily.
       </Typography>
       <Typography
-        variant="subtitle1"
+        variant="body1"
         style={{ color: theme.palette.text.secondary }}
       >
         <ul>
