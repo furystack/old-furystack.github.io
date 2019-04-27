@@ -25,15 +25,15 @@
     "build:webpack": "rimraf bundle && webpack",
     "start": "webpack-dev-server --progress",
     "predeploy": "yarn run build:webpack",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d bundle/assets"
   },
   "private": true,
   "publishConfig": {
     "access": "private"
   },
-  "author": "Sense/Net <snteam@sensenet.com> (http://sensenet.com/)",
+  "author": "Gallay Lajos <gallay.lajos@gmail.com> (http://furystack.github.io/)",
   "license": "GPL-2.0",
-  "homepage": "https://sensenet.com",
+  "homepage": "http://furystack.github.io/",
   "devDependencies": {
     "@types/enzyme": "^3.9.1",
     "@types/enzyme-adapter-react-16": "^1.0.5",
