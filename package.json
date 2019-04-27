@@ -33,7 +33,7 @@
   },
   "author": "Gallay Lajos <gallay.lajos@gmail.com> (http://furystack.github.io/)",
   "license": "GPL-2.0",
-  "homepage": "http://furystack.github.io/",
+  "homepage": "https://furystack.github.io/",
   "devDependencies": {
     "@types/enzyme": "^3.9.1",
     "@types/enzyme-adapter-react-16": "^1.0.5",
