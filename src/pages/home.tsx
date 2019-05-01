@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import { ThemeContext } from "../context/theme-context";
 import { Link } from "react-router-dom";
@@ -12,14 +12,18 @@ import falcon from "../images/falcon.png";
 
 export const HomeBulletPoint: React.FunctionComponent<{
   img?: string;
+  title?: string;
 }> = props => {
+  const [isHovered, setIsHovered] = useState(false);
+  const theme = useContext(ThemeContext);
   return (
     <div
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       style={{
-        minWidth: 250,
-        maxWidth: 400,
+        width: 300,
         margin: "1em 2em",
-        textAlign: "justify",
+        textAlign: "left",
         flex: 1,
         display: "flex",
         flexDirection: "column",
@@ -27,17 +31,31 @@ export const HomeBulletPoint: React.FunctionComponent<{
       }}
     >
       <img
-        width={128}
-        height={128}
+        width={250}
+        height={250}
         src={props.img}
         style={{
           display: "block",
           textAlign: "center",
-          marginBottom: 5,
-          borderRadius: 6
+          marginBottom: 8,
+          borderRadius: 10,
+          filter: isHovered ? "" : "sepia(0.5) contrast(1.4)",
+          transition: "filter 1.5s ease-in-out 0.3s",
+          boxShadow: "1px 1px 20px rgba(0,0,0,0.6)"
         }}
       />
-      <div>{props.children}</div>
+      <Typography
+        style={{ color: theme.palette.text.primary, width: "100%" }}
+        variant="h5"
+      >
+        {props.title}
+      </Typography>
+      <Typography
+        style={{ color: theme.palette.text.secondary, textAlign: "justify" }}
+        variant="body1"
+      >
+        {props.children}
+      </Typography>
     </div>
   );
 };
@@ -53,8 +71,8 @@ export const Home: React.FunctionComponent = () => {
           textAlign: "center"
         }}
       >
-        FuryStack is a flexible framework that allows you to build complex
-        backend services fast and easily.
+        A flexible framework that allows you to build complex backend services
+        fast and easily.
       </Typography>
 
       <div style={{ margin: "5em", display: "flex", justifyContent: "center" }}>
@@ -69,51 +87,44 @@ export const Home: React.FunctionComponent = () => {
         </Link>
       </div>
 
-      <Typography
-        variant="subtitle1"
-        style={{ color: theme.palette.text.secondary }}
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-evenly",
+          alignItems: "flex-start",
+          flexDirection: "row"
+        }}
       >
-        <div
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-evenly",
-            alignItems: "flex-start",
-            flexDirection: "row"
-          }}
+        <HomeBulletPoint img={falcon} title="Rapid development. ">
+          You can create a backend microservice in minutes with authentication,
+          data stores, custom actions and ODdata without 3rd party packages.
+        </HomeBulletPoint>
+        <HomeBulletPoint
+          img={roach}
+          title="Contains all you need for the start."
         >
-          <HomeBulletPoint img={falcon}>
-            <strong>Rapid development. </strong> You can create a backend
-            microservice in minutes with authentication, data stores, custom
-            actions and ODdata without 3rd party packages.
-          </HomeBulletPoint>
-          <HomeBulletPoint img={roach}>
-            <strong>Contains all you need for the start.</strong> You don't have
-            to waste your time looking after packages for entry-level
-            functionality
-          </HomeBulletPoint>
-          <HomeBulletPoint img={jabba}>
-            <strong>No more bloated dependencies.</strong> The Core is built on
-            a top of native NodeJS calls. All of the dependencies are carefully
-            selected and maintained.
-          </HomeBulletPoint>
-          <HomeBulletPoint img={hiddenBlade}>
-            <strong>Easy to extend. </strong> You can create and use your own
-            custom actions, websocket calls or implement your custom data store
-            or logger
-          </HomeBulletPoint>
-          <HomeBulletPoint img={fryingPan}>
-            <strong>Cross platform. </strong> You can run it where NodeJs runs.
-            Even on a frying pan. You can use some of the packages (logger,
-            inject) on the frontend as well
-          </HomeBulletPoint>
-          <HomeBulletPoint img={tsLogo}>
-            <strong>Written in Typescript.</strong> You shouldn't waste your
-            time with chasing errors that static typing can handle. This is not
-            a joke. The public APIs are clean and readable.
-          </HomeBulletPoint>
-        </div>
-      </Typography>
+          You don't have to waste your time looking after packages for
+          entry-level functionality
+        </HomeBulletPoint>
+        <HomeBulletPoint img={jabba} title="No more bloated dependencies.">
+          The Core is built on a top of native NodeJS calls. All of the
+          dependencies are carefully selected and maintained.
+        </HomeBulletPoint>
+        <HomeBulletPoint img={hiddenBlade} title="Easy to extend. ">
+          You can create and use your own custom actions, websocket calls or
+          implement your custom data store or logger
+        </HomeBulletPoint>
+        <HomeBulletPoint img={fryingPan} title="Cross Platform.">
+          You can run it where NodeJs runs. Even on a frying pan. You can use
+          some of the packages (logger, inject) on the frontend as well
+        </HomeBulletPoint>
+        <HomeBulletPoint img={tsLogo} title="Written in Typescript.">
+          You shouldn't waste your time with chasing errors that static typing
+          can handle. This is not a joke. The public APIs are clean and
+          readable.
+        </HomeBulletPoint>
+      </div>
     </div>
   );
 };
