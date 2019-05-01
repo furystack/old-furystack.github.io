@@ -5,7 +5,8 @@ import { ThemeContext } from "../context/theme-context";
 import { useContext } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Home } from "../pages/home";
-import { Packages } from "../pages/packages";
+import { GettingStarted } from "../pages/getting-started";
+import { Guide } from "../pages/guide";
 
 export const App: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
@@ -39,8 +40,11 @@ export const App: React.FunctionComponent = () => {
             }}
           >
             <Switch>
-              <Route path="/packages">
-                <Packages />
+              <Route path="/getting-started">
+                <GettingStarted />
+              </Route>
+              <Route path="/guide">
+                <Guide />
               </Route>
               <Route>
                 <Home />

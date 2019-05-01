@@ -1,129 +1,118 @@
 import React, { useContext } from "react";
 import Typography from "@material-ui/core/Typography";
 import { ThemeContext } from "../context/theme-context";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardMedia from "@material-ui/core/CardMedia";
-import gettingStarted from "../images/getting-started.jpg";
-import packages from "../images/packages.jpg";
-import CardContent from "@material-ui/core/CardContent";
-import CardActions from "@material-ui/core/CardActions";
-import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
+import tsLogo from "../images/ts_logo.png";
+import fryingPan from "../images/frying_pan.png";
+import hiddenBlade from "../images/hidden_blade.jpg";
+import jabba from "../images/jabba.png";
+import roach from "../images/roach.jpg";
+import falcon from "../images/falcon.png";
+
+export const HomeBulletPoint: React.FunctionComponent<{
+  img?: string;
+}> = props => {
+  return (
+    <div
+      style={{
+        minWidth: 250,
+        maxWidth: 400,
+        margin: "1em 2em",
+        textAlign: "justify",
+        flex: 1,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center"
+      }}
+    >
+      <img
+        width={128}
+        height={128}
+        src={props.img}
+        style={{
+          display: "block",
+          textAlign: "center",
+          marginBottom: 5,
+          borderRadius: 6
+        }}
+      />
+      <div>{props.children}</div>
+    </div>
+  );
+};
 
 export const Home: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
   return (
     <div>
       <Typography
-        variant="subtitle1"
-        style={{ color: theme.palette.text.primary, textAlign: "center" }}
+        variant="h5"
+        style={{
+          color: theme.palette.text.primary,
+          textAlign: "center"
+        }}
       >
         FuryStack is a flexible framework that allows you to build complex
         backend services fast and easily.
       </Typography>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-evenly",
-          flexWrap: "wrap"
-        }}
-      >
-        <Card style={{ width: 350, margin: "1em 2em" }}>
-          <Link
-            to="/packages"
-            style={{ color: "initial", textDecoration: "initial" }}
+
+      <div style={{ margin: "5em", display: "flex", justifyContent: "center" }}>
+        <Link to="/getting-started">
+          <Button
+            color="primary"
+            variant="contained"
+            style={{ textDecoration: "none" }}
           >
-            <CardActionArea>
-              <CardMedia
-                style={{ height: 220, minWidth: 350 }}
-                component="img"
-                image={packages}
-                title="Getting Started"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Packages
-                </Typography>
-                <Typography component="p">
-                  Check out the NPM package of each layer of fury. Even the
-                  dachshund will be enraged.
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Link>
-          <CardActions>
-            <Button size="small" color="primary">
-              Share
-            </Button>
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
-          </CardActions>
-        </Card>
-        <Card style={{ width: 350, margin: "1em 2em" }}>
-          <CardActionArea
-            onClick={() =>
-              window.open(
-                "https://github.com/furystack/furystack/tree/master/examples/repository",
-                "_blank"
-              )
-            }
-          >
-            <CardMedia
-              style={{ height: 220, minWidth: 350 }}
-              component="img"
-              image={gettingStarted}
-              title="Getting Started"
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="h2">
-                Getting started
-              </Typography>
-              <Typography component="p">
-                Check out the example repository. More detailed onboarding docs
-                coming soon. Honestly.
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-          <CardActions>
-            <Button size="small" color="primary">
-              Share
-            </Button>
-            <Button size="small" color="primary">
-              Learn More
-            </Button>
-          </CardActions>
-        </Card>
+            Get started
+          </Button>
+        </Link>
       </div>
+
       <Typography
         variant="subtitle1"
         style={{ color: theme.palette.text.secondary }}
       >
-        <ul>
-          <li>
-            Written in Typescript. The public APIs are clean and readable.
-          </li>
-          <li>
-            The Core is built on a top of native Node calls. Dependencies are
-            carefully selected.
-          </li>
-          <li>
-            You can create a backend in minutes with authentication, data
-            stores, custom actions and ODdata without 3rd party packages. You
-            don't have to waste your time looking for packages for entry-level
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "space-evenly",
+            alignItems: "flex-start",
+            flexDirection: "row"
+          }}
+        >
+          <HomeBulletPoint img={falcon}>
+            <strong>Rapid development. </strong> You can create a backend
+            microservice in minutes with authentication, data stores, custom
+            actions and ODdata without 3rd party packages.
+          </HomeBulletPoint>
+          <HomeBulletPoint img={roach}>
+            <strong>Contains all you need for the start.</strong> You don't have
+            to waste your time looking after packages for entry-level
             functionality
-          </li>
-          <li>
-            You can create and use your own custom actions, websocket calls,
-            data store or logger easily
-          </li>
-          <li>
-            You can use some of the packages (logger and inject at the moment)
-            on the frontend as well
-          </li>
-        </ul>
+          </HomeBulletPoint>
+          <HomeBulletPoint img={jabba}>
+            <strong>No more bloated dependencies.</strong> The Core is built on
+            a top of native NodeJS calls. All of the dependencies are carefully
+            selected and maintained.
+          </HomeBulletPoint>
+          <HomeBulletPoint img={hiddenBlade}>
+            <strong>Easy to extend. </strong> You can create and use your own
+            custom actions, websocket calls or implement your custom data store
+            or logger
+          </HomeBulletPoint>
+          <HomeBulletPoint img={fryingPan}>
+            <strong>Cross platform. </strong> You can run it where NodeJs runs.
+            Even on a frying pan. You can use some of the packages (logger,
+            inject) on the frontend as well
+          </HomeBulletPoint>
+          <HomeBulletPoint img={tsLogo}>
+            <strong>Written in Typescript.</strong> You shouldn't waste your
+            time with chasing errors that static typing can handle. This is not
+            a joke. The public APIs are clean and readable.
+          </HomeBulletPoint>
+        </div>
       </Typography>
     </div>
   );

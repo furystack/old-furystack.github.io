@@ -6,6 +6,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import githubImg from "../images/gh64.png";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 export const MainAppBar: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
@@ -43,15 +44,26 @@ export const MainAppBar: React.FunctionComponent = () => {
           }}
         >
           <Link
-            to="/packages"
-            title="Packages"
+            to="/getting-started"
             style={{
               textDecoration: "none",
               marginRight: "0.5em",
               fontSize: "1.5em"
             }}
           >
-            📦
+            <Button style={{ color: theme.palette.text.primary }}>
+              Getting started
+            </Button>
+          </Link>
+          <Link
+            to="/guide"
+            style={{
+              textDecoration: "none",
+              marginRight: "0.5em",
+              fontSize: "1.5em"
+            }}
+          >
+            <Button style={{ color: theme.palette.text.primary }}>Guide</Button>
           </Link>
           <a
             title="See more on GitHub"
