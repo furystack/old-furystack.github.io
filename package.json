@@ -24,7 +24,7 @@
     "lint": "tslint --project .",
     "build:webpack": "rimraf bundle && webpack",
     "start": "webpack-dev-server --progress",
-    "predeploy": "yarn run build:webpack && cpx 404.html ./bundle/assets && cpx .nojekyll ./bundle/assets",
+    "predeploy": "yarn run build:webpack && cpx ./static/**/* ./bundle/assets && cpx ./static/**/.* ./bundle/assets",
     "deploy": "gh-pages -d bundle/assets -t -b master"
   },
   "private": true,
