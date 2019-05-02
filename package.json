@@ -24,7 +24,7 @@
     "lint": "tslint --project .",
     "build:webpack": "rimraf bundle && webpack",
     "start": "webpack-dev-server --progress",
-    "predeploy": "yarn run build:webpack",
+    "predeploy": "yarn run build:webpack && cpx 404.html ./bundle/assets",
     "deploy": "gh-pages -d bundle/assets -b master"
   },
   "private": true,
@@ -47,6 +47,7 @@
     "autoprefixer": "^9.5.1",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^2.1.1",
+    "cpx": "^1.5.0",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.12.1",
     "enzyme-to-json": "^3.3.5",
