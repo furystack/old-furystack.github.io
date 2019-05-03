@@ -9,6 +9,7 @@ import hiddenBlade from "../images/hidden_blade.jpg";
 import jabba from "../images/jabba.png";
 import roach from "../images/roach.jpg";
 import falcon from "../images/falcon.png";
+import logo from "../images/logo_transparent.png";
 
 export const HomeBulletPoint: React.FunctionComponent<{
   img?: string;
@@ -64,27 +65,42 @@ export const Home: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
   return (
     <div>
-      <Typography
-        variant="h5"
+      <div
         style={{
-          color: theme.palette.text.primary,
-          textAlign: "center"
+          display: "flex",
+          justifyContent: "space-evenly",
+          alignItems: "center",
+          flexWrap: "wrap"
         }}
       >
-        A flexible framework that allows you to build complex backend services
-        fast and easily.
-      </Typography>
-
-      <div style={{ margin: "5em", display: "flex", justifyContent: "center" }}>
-        <Link to="/getting-started">
-          <Button
-            color="primary"
-            variant="contained"
-            style={{ textDecoration: "none" }}
+        <img src={logo} style={{ margin: "2em" }} />
+        <Typography
+          variant="h5"
+          style={{
+            color: theme.palette.text.primary,
+            textAlign: "center",
+            flex: 1,
+            minWidth: "450px",
+            maxWidth: "600px",
+            padding: "1em"
+          }}
+        >
+          A flexible framework that allows you to build complex backend services
+          fast and easily.
+          <div
+            style={{ margin: "1em", display: "flex", justifyContent: "center" }}
           >
-            Get started
-          </Button>
-        </Link>
+            <Link to="/getting-started">
+              <Button
+                color="primary"
+                variant="contained"
+                style={{ textDecoration: "none" }}
+              >
+                Get started
+              </Button>
+            </Link>
+          </div>
+        </Typography>
       </div>
 
       <div

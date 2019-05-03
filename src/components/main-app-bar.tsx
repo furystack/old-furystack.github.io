@@ -7,6 +7,7 @@ import Typography from "@material-ui/core/Typography";
 import githubImg from "../images/gh64.png";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import icon from "../images/icon.png";
 
 export const MainAppBar: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
@@ -27,9 +28,12 @@ export const MainAppBar: React.FunctionComponent = () => {
           }}
         >
           <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            <Typography variant="h4" color="inherit">
-              🐱‍👤 FuryStack
-            </Typography>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <img src={icon} height={30} style={{ marginRight: "1em" }} />
+              <Typography variant="h4" color="inherit">
+                FuryStack
+              </Typography>
+            </div>
           </Link>
         </div>
         <div style={{ flex: 1 }} />
