@@ -28,7 +28,8 @@ export const HomeBulletPoint: React.FunctionComponent<{
         flex: 1,
         display: "flex",
         flexDirection: "column",
-        alignItems: "center"
+        alignItems: "center",
+        maxWidth: 550
       }}
     >
       <img
