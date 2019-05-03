@@ -1,12 +1,90 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <title>Single Page Apps for GitHub Pages</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-139203068-1"
+    ></script>
     <script>
-      sessionStorage.redirect = location.href;
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-139203068-1");
     </script>
-    <meta http-equiv="refresh" content="0;URL='/'" />
+
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, height=device-height, minimum-scale=1.0, initial-scale=1.0, user-scalable=0"
+    />
+    <meta
+      name="description"
+      content="A backend framework for well-architected NodeJs application development in Typescript"
+    />
+    <title>furystack.github.io</title>
+    <style>
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        background-color: #fff;
+      }
+      /* width */
+      ::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: rgba(128, 128, 128, 0.3);
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #888;
+      }
+
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      /* Transition */
+
+      .fade-enter {
+        opacity: 0;
+        z-index: 1;
+      }
+
+      .fade-enter.fade-enter-active {
+        opacity: 1;
+        transition: opacity 250ms ease-in;
+      }
+    </style>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
+    />
+    <script type="text/javascript">
+      (function() {
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect != location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
   </head>
-  <body></body>
+  <body>
+    <div id="root"></div>
+  <script type="text/javascript" src="/vendors~main.bundle.js"></script><script type="text/javascript" src="/main.bundle.js"></script></body>
 </html>
