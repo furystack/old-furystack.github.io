@@ -300,7 +300,35 @@ export class HelloWorldAction implements IRequestAction {
           </li>
           <li>A custom HelloWorld action - from about ~21 lines of code</li>
         </ul>
+        One of the main goal of FuryStack is to give a clean and
+        easy-to-understand, but also flexible and expandable API set for
+        building application backends - from microservices to the
+        enterprise-level.
       </TextBody>
+      <TextBody>
+        The following example is also available in{" "}
+        <a
+          href="https://github.com/furystack/hello-world-app"
+          target="_blank"
+          style={{ color: theme.palette.text.primary }}
+        >
+          this
+        </a>{" "}
+        Github repository.
+      </TextBody>
+      <TextBody>
+        Thanks for reading the first tutorial, don't hesitate to give some
+        feedback 😉
+      </TextBody>
+      <div
+        className="fb-comments"
+        {...{
+          "data-href": "https://furystack.github.io/getting-started.html",
+          "data-width": "800",
+          "data-numposts": "15",
+          "data-colorscheme": "dark"
+        }}
+      />
     </div>
   );
 };
