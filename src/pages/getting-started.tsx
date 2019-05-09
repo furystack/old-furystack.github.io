@@ -4,7 +4,6 @@ import { ThemeContext } from "../context/theme-context";
 import { CodeSnippet } from "../components/code-snippet";
 import { Subheader } from "../components/subheader";
 import { TextBody } from "../components/text-body";
-import { CodeBlock } from "../components/code-block";
 
 export const GettingStarted: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
@@ -107,9 +106,19 @@ export const GettingStarted: React.FunctionComponent = () => {
         </ul>
         And now, the code snippet:
       </TextBody>
-      <CodeBlock
-        options={{ readOnly: true }}
-        value={`import { Injector } from "@furystack/inject";
+      <textarea
+        style={{
+          height: 375,
+          width: "100%",
+          background: "transparent",
+          fontFamily: "monospace",
+          color: theme.palette.text.disabled,
+          outline: "none",
+          padding: 3,
+          margin: "2em 0"
+        }}
+        readOnly={true}
+        defaultValue={`import { Injector } from "@furystack/inject";
 import { ConsoleLogger } from "@furystack/logging";
 import { InMemoryStore, User, StoreManager } from "@furystack/core";
 import { HttpAuthenticationSettings } from "@furystack/http-api";
@@ -206,9 +215,19 @@ injector
         We will implement a new custom 'Hello World' action. Stop your
         application (ctrl+c in the console) and create a new file called
         'hello-world-action.ts' next to your 'index.ts':
-        <CodeBlock
-          options={{ readOnly: true }}
-          value={`import { IRequestAction, HttpUserContext } from "@furystack/http-api";
+        <textarea
+          style={{
+            height: 275,
+            width: "100%",
+            background: "transparent",
+            fontFamily: "monospace",
+            color: theme.palette.text.disabled,
+            outline: "none",
+            padding: 3,
+            margin: "2em 0"
+          }}
+          readOnly={true}
+          defaultValue={`import { IRequestAction, HttpUserContext } from "@furystack/http-api";
 import { Injectable } from "@furystack/inject";
 import { ServerResponse } from "http";
            
@@ -265,11 +284,7 @@ export class HelloWorldAction implements IRequestAction {
   })`}
         />
         Restart your application and send a request to{" "}
-        <a
-          href="http://localhost:654"
-          target="_blank"
-          style={{ color: theme.palette.text.primary }}
-        >
+        <a href="http://localhost:654" target="_blank">
           http://localhost:654
         </a>
         . You will get a plain text response with the 'Hello Visitor!' text from
@@ -279,10 +294,6 @@ export class HelloWorldAction implements IRequestAction {
       <TextBody>
         Let's sum up what we've done in this example:
         <ul>
-          <li>
-            Set up a new NPM project with a minimal set of dependencies and a
-            minimistic build config
-          </li>
           <li>
             A basic backend application with an in-memory store, logging,
             authentication and custom routing - from about ~35 lines of code

@@ -3,7 +3,6 @@ var path = require("path");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TsConfigWebpackPlugin = require("ts-config-webpack-plugin");
-const MonacoWebpackPlugin = require("monaco-editor-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -41,9 +40,6 @@ module.exports = {
     new TsConfigWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: "./index.html"
-    }),
-    new MonacoWebpackPlugin({
-      languages: ["plaintext", "json", "javascript", "typescript"]
     })
   ],
   module: {
