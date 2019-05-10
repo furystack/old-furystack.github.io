@@ -7,6 +7,7 @@ import { Home } from "../pages/home";
 import { GettingStarted } from "../pages/getting-started";
 import { Guide } from "../pages/guide";
 import { MuiThemeProvider } from "@material-ui/core/styles";
+import { GuideInject } from "../pages/guide-inject";
 
 export const App: React.FunctionComponent = () => {
   return (
@@ -50,6 +51,9 @@ export const App: React.FunctionComponent = () => {
                     </Route>
                     <Route path="/guide">
                       <Guide />
+                    </Route>
+                    <Route path="/guide-inject">
+                      <GuideInject />
                     </Route>
                     <Route>
                       <Home />

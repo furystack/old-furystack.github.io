@@ -4,6 +4,8 @@ import { ThemeContext } from "../context/theme-context";
 import { CodeSnippet } from "../components/code-snippet";
 import { Subheader } from "../components/subheader";
 import { TextBody } from "../components/text-body";
+import { CodeTextArea } from "../components/code-text-area";
+import { Link } from "../components/link";
 
 export const GettingStarted: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
@@ -90,13 +92,9 @@ export const GettingStarted: React.FunctionComponent = () => {
           </li>
           <li>
             Start the server at{" "}
-            <a
-              style={{ color: theme.palette.text.primary }}
-              href="http://localhost:654"
-              target="_blank"
-            >
+            <Link href="http://localhost:654" target="_blank">
               http://localhost:654
-            </a>
+            </Link>
           </li>
           <li>
             Retrieve an User store from StoreManager and add a Test User (we
@@ -106,19 +104,8 @@ export const GettingStarted: React.FunctionComponent = () => {
         </ul>
         And now, the code snippet:
       </TextBody>
-      <textarea
-        style={{
-          height: 375,
-          width: "100%",
-          background: "transparent",
-          fontFamily: "monospace",
-          color: theme.palette.text.disabled,
-          outline: "none",
-          padding: 3,
-          margin: "2em 0"
-        }}
-        readOnly={true}
-        defaultValue={`import { Injector } from "@furystack/inject";
+      <CodeTextArea
+        value={`import { Injector } from "@furystack/inject";
 import { ConsoleLogger } from "@furystack/logging";
 import { InMemoryStore, User, StoreManager } from "@furystack/core";
 import { HttpAuthenticationSettings } from "@furystack/http-api";
@@ -170,23 +157,15 @@ injector
       <TextBody>
         You can also try them out now. <br />
         If you open{" "}
-        <a
-          href="http://localhost:654/currentUser"
-          target="_blank"
-          style={{ color: theme.palette.text.primary }}
-        >
+        <Link href="http://localhost:654/currentUser" target="_blank">
           http://localhost:654/currentUser
-        </a>
+        </Link>
         , you'll see that by default you will be a Visitor user without roles.
         You can authenticate your request in two ways in this example
         application - both can be achieved easily with&nbsp;
-        <a
-          href="https://www.getpostman.com/"
-          target="_blank"
-          style={{ color: theme.palette.text.primary }}
-        >
+        <Link href="https://www.getpostman.com/" target="_blank">
           Postman
-        </a>
+        </Link>
         .
         <ul>
           <li>
@@ -215,19 +194,8 @@ injector
         We will implement a new custom 'Hello World' action. Stop your
         application (ctrl+c in the console) and create a new file called
         'hello-world-action.ts' next to your 'index.ts':
-        <textarea
-          style={{
-            height: 275,
-            width: "100%",
-            background: "transparent",
-            fontFamily: "monospace",
-            color: theme.palette.text.disabled,
-            outline: "none",
-            padding: 3,
-            margin: "2em 0"
-          }}
-          readOnly={true}
-          defaultValue={`import { IRequestAction, HttpUserContext } from "@furystack/http-api";
+        <CodeTextArea
+          value={`import { IRequestAction, HttpUserContext } from "@furystack/http-api";
 import { Injectable } from "@furystack/inject";
 import { ServerResponse } from "http";
            
@@ -264,19 +232,8 @@ export class HelloWorldAction implements IRequestAction {
         </CodeSnippet>{" "}
         at the top of our index.ts and add the following snippet right after{" "}
         <code>'.useDefaultLoginRoutes()'</code>:
-        <textarea
-          style={{
-            height: 100,
-            width: "100%",
-            background: "transparent",
-            fontFamily: "monospace",
-            color: theme.palette.text.disabled,
-            outline: "none",
-            padding: 3,
-            margin: "2em 0"
-          }}
-          readOnly={true}
-          defaultValue={`  .addHttpRouting(msg => {
+        <CodeTextArea
+          value={`  .addHttpRouting(msg => {
     const urlPathName = parse(msg.url || "", true).pathname;
     if (urlPathName === "/helloWorld") {
       return HelloWorldAction;
@@ -284,9 +241,9 @@ export class HelloWorldAction implements IRequestAction {
   })`}
         />
         Restart your application and send a request to{" "}
-        <a href="http://localhost:654" target="_blank">
+        <Link href="http://localhost:654" target="_blank">
           http://localhost:654
-        </a>
+        </Link>
         . You will get a plain text response with the 'Hello Visitor!' text from
         your newly created action.
       </TextBody>
@@ -307,13 +264,12 @@ export class HelloWorldAction implements IRequestAction {
       </TextBody>
       <TextBody>
         The following example is also available in{" "}
-        <a
+        <Link
           href="https://github.com/furystack/hello-world-app"
           target="_blank"
-          style={{ color: theme.palette.text.primary }}
         >
           this
-        </a>{" "}
+        </Link>{" "}
         Github repository.
       </TextBody>
       <TextBody>
