@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
 import Typography from "@material-ui/core/Typography";
-import { ThemeContext } from "../context/theme-context";
-import { Subheader } from "../components/subheader";
-import { TextBody } from "../components/text-body";
-import { Link } from "../components/link";
+import React, { useContext } from "react";
 import { CodeSnippet } from "../components/code-snippet";
 import { CodeTextArea } from "../components/code-text-area";
+import { Link } from "../components/link";
+import { Subheader } from "../components/subheader";
+import { TextBody } from "../components/text-body";
+import { ThemeContext } from "../context/theme-context";
 
 export const GuideInject: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);

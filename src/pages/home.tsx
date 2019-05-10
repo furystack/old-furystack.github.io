@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
-import Typography from "@material-ui/core/Typography";
-import { ThemeContext } from "../context/theme-context";
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
-import tsLogo from "../images/ts_logo.png";
+import Typography from "@material-ui/core/Typography";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { ThemeContext } from "../context/theme-context";
+import falcon from "../images/falcon.png";
 import fryingPan from "../images/frying_pan.png";
 import hiddenBlade from "../images/hidden_blade.jpg";
 import jabba from "../images/jabba.png";
-import roach from "../images/roach.jpg";
-import falcon from "../images/falcon.png";
 import logo from "../images/logo_transparent.png";
+import roach from "../images/roach.jpg";
+import tsLogo from "../images/ts_logo.png";
 
 export const HomeBulletPoint: React.FunctionComponent<{
   img?: string;

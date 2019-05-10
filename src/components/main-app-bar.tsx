@@ -1,12 +1,12 @@
 import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import { useContext } from "react";
-import { ThemeContext } from "../context/theme-context";
-import React from "react";
-import Typography from "@material-ui/core/Typography";
-import githubImg from "../images/gh64.png";
-import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import { useContext } from "react";
+import React from "react";
+import { Link } from "react-router-dom";
+import { ThemeContext } from "../context/theme-context";
+import githubImg from "../images/gh64.png";
 import icon from "../images/icon.png";
 
 export const MainAppBar: React.FunctionComponent = () => {

@@ -87,6 +87,7 @@
     "react-syntax-highlighter": "^10.2.1",
     "react-transition-group": "^4.0.0",
     "semaphore-async-await": "^1.5.1",
+    "tslint-consistent-codestyle": "^1.15.1",
     "uuid": "^3.3.2"
   },
   "typings": "./dist/index.d.ts"

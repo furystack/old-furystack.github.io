@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
 import Typography from "@material-ui/core/Typography";
+import React, { useContext } from "react";
 import { ThemeContext } from "../context/theme-context";
 
 export const GuideDataStores: React.FunctionComponent = () => {

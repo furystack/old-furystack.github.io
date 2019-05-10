@@ -1,13 +1,13 @@
-import * as React from "react";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import { MainAppBar } from "./main-app-bar";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import * as React from "react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeContext } from "../context/theme-context";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Home } from "../pages/home";
 import { GettingStarted } from "../pages/getting-started";
 import { Guide } from "../pages/guide";
-import { MuiThemeProvider } from "@material-ui/core/styles";
 import { GuideInject } from "../pages/guide-inject";
+import { Home } from "../pages/home";
+import { MainAppBar } from "./main-app-bar";
 
 export const App: React.FunctionComponent = () => {
   return (
