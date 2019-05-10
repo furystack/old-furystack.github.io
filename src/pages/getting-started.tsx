@@ -10,7 +10,7 @@ import { ThemeContext } from "../context/theme-context";
 export const GettingStarted: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
   return (
-    <div style={{ maxWidth: 800, justifySelf: "center" }}>
+    <div style={{ width: "calc(100% - 2em)", justifySelf: "center" }}>
       <Typography
         variant="h3"
         style={{ color: theme.palette.text.primary }}

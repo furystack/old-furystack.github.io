@@ -27,10 +27,25 @@ export const MainAppBar: React.FunctionComponent = () => {
             flexGrow: 0
           }}
         >
-          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+          <Link
+            to="/"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+              overflow: "hidden"
+            }}
+          >
             <div style={{ display: "flex", alignItems: "center" }}>
-              <img src={icon} height={30} style={{ marginRight: "1em" }} />
-              <Typography variant="h4" color="inherit">
+              <img src={icon} style={{ marginRight: "1em" }} />
+              <Typography
+                variant="h4"
+                color="inherit"
+                style={{
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  fontFamily: "monospace"
+                }}
+              >
                 FuryStack
               </Typography>
             </div>
@@ -74,7 +89,12 @@ export const MainAppBar: React.FunctionComponent = () => {
             href="https://github.com/furystack/furystack"
             target="_blank"
           >
-            <img style={{ height: "44px" }} src={githubImg} />
+            <img
+              title="Visit on GitHub"
+              alt="github"
+              style={{ height: "44px" }}
+              src={githubImg}
+            />
           </a>
         </div>
       </Toolbar>

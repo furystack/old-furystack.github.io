@@ -65,44 +65,43 @@ export const HomeBulletPoint: React.FunctionComponent<{
 export const Home: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
   return (
-    <div>
-      <div
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+        flexWrap: "wrap",
+        width: "100%"
+      }}
+    >
+      <img src={logo} style={{ margin: "2em", maxWidth: "calc(100% - 4em)" }} />
+      <Typography
+        variant="h5"
         style={{
-          display: "flex",
-          justifyContent: "space-evenly",
-          alignItems: "center",
-          flexWrap: "wrap"
+          color: theme.palette.text.primary,
+          textAlign: "center",
+          flex: 1,
+          minWidth: "150px",
+          maxWidth: "600px",
+          padding: "1em"
         }}
       >
-        <img src={logo} style={{ margin: "2em" }} />
-        <Typography
-          variant="h5"
-          style={{
-            color: theme.palette.text.primary,
-            textAlign: "center",
-            flex: 1,
-            minWidth: "450px",
-            maxWidth: "600px",
-            padding: "1em"
-          }}
+        A flexible framework that allows you to build complex backend services
+        fast and easily.
+        <div
+          style={{ margin: "1em", display: "flex", justifyContent: "center" }}
         >
-          A flexible framework that allows you to build complex backend services
-          fast and easily.
-          <div
-            style={{ margin: "1em", display: "flex", justifyContent: "center" }}
-          >
-            <Link to="/getting-started">
-              <Button
-                color="primary"
-                variant="contained"
-                style={{ textDecoration: "none" }}
-              >
-                Get started
-              </Button>
-            </Link>
-          </div>
-        </Typography>
-      </div>
+          <Link to="/getting-started">
+            <Button
+              color="primary"
+              variant="contained"
+              style={{ textDecoration: "none" }}
+            >
+              Get started
+            </Button>
+          </Link>
+        </div>
+      </Typography>
 
       <div
         style={{
@@ -110,7 +109,8 @@ export const Home: React.FunctionComponent = () => {
           flexWrap: "wrap",
           justifyContent: "space-evenly",
           alignItems: "flex-start",
-          flexDirection: "row"
+          flexDirection: "row",
+          width: "100%"
         }}
       >
         <HomeBulletPoint img={falcon} title="Rapid development. ">

@@ -8,7 +8,7 @@ import { ThemeContext } from "../context/theme-context";
 export const Guide: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
   return (
-    <div style={{ maxWidth: 1024 }}>
+    <div style={{ width: "calc(100% - 2em)" }}>
       <Typography variant="h5" style={{ color: theme.palette.text.primary }}>
         📜Guide
       </Typography>

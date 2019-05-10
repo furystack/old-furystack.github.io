@@ -10,7 +10,7 @@ import { ThemeContext } from "../context/theme-context";
 export const GuideInject: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
   return (
-    <div style={{ maxWidth: 1024 }}>
+    <div style={{ width: "calc(100% - 2em)" }}>
       <Typography variant="h3" style={{ color: theme.palette.text.primary }}>
         Inject 💉
       </Typography>
