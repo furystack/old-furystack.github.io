@@ -49,10 +49,10 @@ export const App: React.FunctionComponent = () => {
                     <Route path="/getting-started">
                       <GettingStarted />
                     </Route>
-                    <Route path="/guide">
+                    <Route path="/guide" exact={true}>
                       <Guide />
                     </Route>
-                    <Route path="/guide-inject">
+                    <Route path="/guide/inject">
                       <GuideInject />
                     </Route>
                     <Route>

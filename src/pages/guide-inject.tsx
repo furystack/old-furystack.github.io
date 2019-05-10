@@ -12,7 +12,7 @@ export const GuideInject: React.FunctionComponent = () => {
   return (
     <div style={{ width: "calc(100% - 2em)" }}>
       <Typography variant="h3" style={{ color: theme.palette.text.primary }}>
-        Inject 💉
+        @furystack/inject 💉
       </Typography>
       <TextBody>
         FuryStack is heavily built on DI and IOC concepts. It has an own DI/IOC
@@ -46,7 +46,7 @@ export const GuideInject: React.FunctionComponent = () => {
         also injectable services and they will be resolved recursively. Take a
         look at the following example and you'll get the idea:
         <CodeTextArea
-          value={`const i = new Injector()
+          value={`const injector = new Injector()
 @Injectable()
 class Service1 {
   constructor(public service2: Service2, public service3: Service3) {}
@@ -59,8 +59,8 @@ class Service2 {
 class Service3 {
   public value = 'bar'
 }
-expect(i.getInstance(Service1).service2.value).toBe('foo')
-expect(i.getInstance(Service1).service2.value).toBe('bar')`}
+expect(injector.getInstance(Service1).service2.value).toBe('foo')
+expect(injector.getInstance(Service1).service2.value).toBe('bar')`}
         />
         All of the 3 classes are decorated as an injectable service. If you
         request an instance of 'Service1', the framework will also provide an
@@ -68,22 +68,119 @@ expect(i.getInstance(Service1).service2.value).toBe('bar')`}
       </TextBody>
 
       <Subheader href="#injector">Injector</Subheader>
-      <TextBody>Injector</TextBody>
+      <TextBody>
+        An <i>injector</i> is basically an extendable container that
+        instantiates services with dependencies and handles their lifecycles.
+        The most used and most important method is the{" "}
+        <CodeSnippet>injector.getInstance(MyServiceClass)</CodeSnippet> that
+        returns with an instance from a requested service. Injectors are smart
+        enough to handle lifecycles (e.g. "singleton" services will be
+        constructed once per injector).
+        <br />
+        You can create multiple injectors in your project, they can act as
+        multiple separated "global" containers.
+        <br />
+        You can also organize injectos in a tree structure in the following way:
+        <CodeTextArea
+          value={`const childInjector = injector.createChild({ owner: 'myCustomContext' })
+`}
+        />
+        Creating child injectors can be useful if you want to store contextual
+        data (e.g. a per-http-request context that should be initialized once)
+      </TextBody>
 
       <Subheader href="#lifecycles">Lifecycles</Subheader>
-      <TextBody>singleton, transient, scoped</TextBody>
-
-      <Subheader href="#scopes">Scopes</Subheader>
-      <TextBody>createChild</TextBody>
+      <TextBody>
+        The package defines four types of lifecycle:
+        <ul>
+          <li>
+            <strong>Transient</strong> injectables are not cached - if you
+            request an instance, you will get a new one every time.
+          </li>
+          <li>
+            <strong>Scoped</strong> injectables are cached, but only on the
+            current level. If a service has been created in a current injector,
+            the existing instance will be returned.
+          </li>
+          <li>
+            <strong>Singleton</strong> injectables are created on the{" "}
+            <i>root</i> injector. If you request a singleton, the injector will
+            check create the instance in it's highest parent - and also returns
+            it from there, if already exists.
+          </li>
+          <li>
+            <strong>Explicit</strong> values are not really injectables - you
+            can call{" "}
+            <CodeSnippet>
+              injector.setExplicitInstance(myServiceInstance)
+            </CodeSnippet>{" "}
+            to set up an instance manually. Just like scoped services, explicit
+            instances will be returned from the current scope only.
+          </li>
+        </ul>
+      </TextBody>
 
       <Subheader href="#extension-methods">Extension methods</Subheader>
-      <TextBody />
+      <TextBody>
+        A simple injector can easily extended from 3rd party packages with
+        extension methods, just like the FuryStack packages. These extension
+        methods usually provides a shortcut of an instance or sets up a
+        preconfigured explicit instance of a service. You can build clean and
+        nice fluent API-s in that way - you can check a{" "}
+        <Link
+          href="https://github.com/furystack/furystack/blob/master/packages/logging/src/InjectorExtension.ts"
+          target="_blank"
+        >
+          code example
+        </Link>{" "}
+        or take a look at the{" "}
+        <Link href="/getting-started">Getting stated</Link> guide to check the
+        result.
+      </TextBody>
 
       <Subheader href="#misc">A few things to care about</Subheader>
+
       <TextBody>
-        circular imports (undefined), circular dependencies, lifecycle
-        dependencies
+        Circular imports: If two of your services are importing each other, one
+        of them will be ignored by CommonJs. Typescript won't complain at
+        compile time, but if you get this:
+        <Typography color="error">
+          Uncaught TypeError: SomeService is not a constructor
+        </Typography>
+        you should start reviewing how your injectables depends on each other.{" "}
+        <br />
+        There is also a limitation by design: A service can depend only a
+        service with a higher or equal lifetime then it's lifetime. That means a
+        <i>singleton</i> <strong>can not</strong> depend on a transient or
+        scoped service - you should get an exception at runtime if you try it.
       </TextBody>
+      <TextBody>
+        The package is available on{" "}
+        <Link
+          href="https://github.com/furystack/furystack/tree/master/packages/inject"
+          target="_blank"
+        >
+          GitHub
+        </Link>{" "}
+        and can be downloaded from{" "}
+        <Link
+          href="https://www.npmjs.com/package/@furystack/inject"
+          target="_blank"
+        >
+          NPM
+        </Link>
+        . Use it, love it. Don't hesitate to leave a feedback, a suggestion or
+        just say Hi.
+      </TextBody>
+      <div
+        className="fb-comments"
+        {...{
+          "data-href": "https://furystack.github.io/guide/inject.html",
+          "data-width": "100%",
+          "data-numposts": "15",
+          "data-colorscheme": "dark"
+        }}
+      />
     </div>
   );
 };

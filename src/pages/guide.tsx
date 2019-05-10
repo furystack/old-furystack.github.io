@@ -12,7 +12,7 @@ export const Guide: React.FunctionComponent = () => {
       <Typography variant="h5" style={{ color: theme.palette.text.primary }}>
         📜Guide
       </Typography>
-      <Subheader href="/guide-inject">@furystack/inject 💉</Subheader>
+      <Subheader href="/guide/inject">@furystack/inject 💉</Subheader>
       <TextBody>
         <Link
           href="https://en.wikipedia.org/wiki/Dependency_injection"
