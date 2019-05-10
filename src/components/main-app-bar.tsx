@@ -4,6 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { useContext } from "react";
 import React from "react";
+import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/theme-context";
 import githubImg from "../images/gh64.png";
@@ -37,17 +38,23 @@ export const MainAppBar: React.FunctionComponent = () => {
           >
             <div style={{ display: "flex", alignItems: "center" }}>
               <img src={icon} style={{ marginRight: "1em" }} />
-              <Typography
-                variant="h4"
-                color="inherit"
-                style={{
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  fontFamily: "monospace"
-                }}
-              >
-                FuryStack
-              </Typography>
+              <MediaQuery minDeviceWidth={500}>
+                {match =>
+                  match ? (
+                    <Typography
+                      variant="h4"
+                      color="inherit"
+                      style={{
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        fontFamily: "monospace"
+                      }}
+                    >
+                      FuryStack
+                    </Typography>
+                  ) : null
+                }
+              </MediaQuery>
             </div>
           </Link>
         </div>
@@ -71,7 +78,7 @@ export const MainAppBar: React.FunctionComponent = () => {
             }}
           >
             <Button style={{ color: theme.palette.text.primary }}>
-              Getting started
+              Get started
             </Button>
           </Link>
           <Link

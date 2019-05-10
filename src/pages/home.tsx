@@ -124,9 +124,9 @@ export const Home: React.FunctionComponent = () => {
           You don't have to waste your time looking after packages for
           entry-level functionality
         </HomeBulletPoint>
-        <HomeBulletPoint img={jabba} title="No more bloated dependencies.">
-          The Core is built on a top of native NodeJS calls. All of the
-          dependencies are carefully selected and maintained.
+        <HomeBulletPoint img={jabba} title="No bloated dependencies.">
+          The Core is built on a top of native (browser/NodeJS) calls. All of
+          the dependencies are carefully selected and maintained.
         </HomeBulletPoint>
         <HomeBulletPoint img={hiddenBlade} title="Easy to extend. ">
           You can create and use your own custom actions, websocket calls or
@@ -138,8 +138,8 @@ export const Home: React.FunctionComponent = () => {
         </HomeBulletPoint>
         <HomeBulletPoint img={tsLogo} title="Written in Typescript.">
           You shouldn't waste your time with chasing errors that static typing
-          can handle. This is not a joke. The public APIs are clean and
-          readable.
+          can handle. This is not a joke. TS is love. TS is life. The public
+          APIs are also clean and readable.
         </HomeBulletPoint>
       </div>
     </div>
