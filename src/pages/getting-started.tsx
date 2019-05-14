@@ -270,7 +270,11 @@ export class HelloWorldAction implements IRequestAction {
         >
           this
         </Link>{" "}
-        Github repository.
+        Github repository, or you can check it online in{" "}
+        <a href="https://glitch.com/~furystack-hello-world-app" target="_blank">
+          Glitch
+        </a>
+        .
       </TextBody>
       <TextBody>
         Thanks for reading the first tutorial, don't hesitate to give some
