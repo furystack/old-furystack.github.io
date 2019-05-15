@@ -70,20 +70,17 @@ export const GettingStarted: React.FunctionComponent = () => {
           <li>Create a new Injector instance</li>
           <li>
             Set up Logging - log messages will be written on the console for now
-            with the default ConsoleLogger.
-          </li>
-          <li>
-            Set up the Stores - we will create an in-memory store for Users for
-            now
+            with the provided ConsoleLogger.
           </li>
           <li>
             Initialize the HTTP API with the default settings. You can set up
             CORS, your custom routing and actions here.
           </li>
           <li>
-            Initialize the HTTP Authentication with the User store we've just
-            created. You can configure custom User model, cookie, password
-            hashing and session store here later
+            Initialize the HTTP Authentication. Users and sessions will be
+            stored in an in-memory data store by default. You can configure
+            custom User store, model, sessions, cookie, password hashing and
+            session store here later
           </li>
           <li>
             Register the default Login routes (login, logout and
@@ -94,7 +91,9 @@ export const GettingStarted: React.FunctionComponent = () => {
             Start the server at{" "}
             <Link href="http://localhost:654" target="_blank">
               http://localhost:654
-            </Link>
+            </Link>{" "}
+            by default. You can configure the port with an environment variable
+            as well.
           </li>
           <li>
             Retrieve an User store from StoreManager and add a Test User (we
@@ -107,20 +106,19 @@ export const GettingStarted: React.FunctionComponent = () => {
       <CodeTextArea
         value={`import { Injector } from "@furystack/inject";
 import { ConsoleLogger } from "@furystack/logging";
-import { InMemoryStore, User, StoreManager } from "@furystack/core";
+import { User, StoreManager } from "@furystack/core";
 import { HttpAuthenticationSettings } from "@furystack/http-api";
+import { HelloWorldAction } from "./hello-world-action";
+import { parse } from "url";
 
 const injector = new Injector()
   .useLogging(ConsoleLogger)
-  .setupStores(stores =>
-    stores.addStore(new InMemoryStore({ model: User, primaryKey: "username" }))
-  )
   .useHttpApi()
-  .useHttpAuthentication({
-    getUserStore: sm => sm.getStoreFor(User)
-  })
+  .useHttpAuthentication()
   .useDefaultLoginRoutes()
-  .listenHttp({ hostName: "localhost", port: 654 });
+  .listenHttp({
+    port: (process.env.PORT && parseInt(process.env.PORT)) || 654
+  });
 
 const authSettings = injector.getInstance(HttpAuthenticationSettings);
 
