@@ -66,7 +66,6 @@ export const Guide: React.FunctionComponent = () => {
       <Subheader href="">More docs are coming soon about</Subheader>
       <Typography>
         <ul>
-          <li>/repository </li>
           <li>🕸/http-api </li>
           <li>✨/odata </li>
           <li>💬/websocket-api </li>
