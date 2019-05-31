@@ -2,7 +2,7 @@ import Typography from "@material-ui/core/Typography";
 import React, { useContext } from "react";
 import { CodeSnippet } from "../components/code-snippet";
 import { CodeTextArea } from "../components/code-text-area";
-import { Link } from "../components/link";
+import { ExternalLink } from "../components/external-link";
 import { Subheader } from "../components/subheader";
 import { TextBody } from "../components/text-body";
 import { ThemeContext } from "../context/theme-context";
@@ -24,12 +24,12 @@ export const GuideDataStores: React.FunctionComponent = () => {
       <TextBody>
         In FuryStack, the preferred mode of accessing data is via physical
         stores. A{" "}
-        <Link
+        <ExternalLink
           href="https://github.com/furystack/furystack/blob/master/packages/core/src/Models/IPhysicalStore.ts"
           target="_blank"
         >
           physical store
-        </Link>{" "}
+        </ExternalLink>{" "}
         is a bare minimum interface that a store should do. A store is always
         bound to a collection with a specified type of entities. It can only do
         the basic CRUD operations (create, get by Id, filter, delete, count).
@@ -91,38 +91,38 @@ const myInjector = new Injector().setupStores(sm =>
             out of the box.
           </li>
           <li>
-            <Link
+            <ExternalLink
               href="https://www.npmjs.com/package/@furystack/typeorm-store"
               target="_blank"
             >
               typeorm-store
-            </Link>{" "}
+            </ExternalLink>{" "}
             is built on the top of the{" "}
-            <Link href="https://typeorm.io/" target="_blank">
+            <ExternalLink href="https://typeorm.io/" target="_blank">
               TypeOrm
-            </Link>{" "}
+            </ExternalLink>{" "}
             package and you can create stores with all of it's supported DBs
             (MySQL / MariaDB / Postgres / CockroachDB / SQLite / Microsoft SQL
             Server / Oracle / sql.js at the moment). Recommended if you want to
             work with any supported SQL-based DB.
           </li>
           <li>
-            <Link
+            <ExternalLink
               href="https://www.npmjs.com/package/@furystack/mongodb-store"
               target="_blank"
             >
               mongodb-store
-            </Link>{" "}
+            </ExternalLink>{" "}
             provides a store implementation for the famous document store.
             Simple yet powerful usage.
           </li>
           <li>
-            <Link
+            <ExternalLink
               href="https://www.npmjs.com/package/@furystack/redis-store"
               target="_blank"
             >
               redis-store
-            </Link>{" "}
+            </ExternalLink>{" "}
             allows you to connect to a redis service. Useful is you want e.g.
             storing user sessions and keep them in sync between multiple web
             nodes. Altough searching is not supported...

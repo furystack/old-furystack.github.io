@@ -2,7 +2,7 @@ import { Typography } from "@material-ui/core";
 import React, { useContext } from "react";
 import { CodeSnippet } from "../components/code-snippet";
 import { CodeTextArea } from "../components/code-text-area";
-import { Link } from "../components/link";
+import { ExternalLink } from "../components/external-link";
 import { Subheader } from "../components/subheader";
 import { TextBody } from "../components/text-body";
 import { ThemeContext } from "../context/theme-context";
@@ -89,9 +89,9 @@ export const GettingStarted: React.FunctionComponent = () => {
           </li>
           <li>
             Start the server at{" "}
-            <Link href="http://localhost:654" target="_blank">
+            <ExternalLink href="http://localhost:654" target="_blank">
               http://localhost:654
-            </Link>{" "}
+            </ExternalLink>{" "}
             by default. You can configure the port with an environment variable
             as well.
           </li>
@@ -155,15 +155,15 @@ injector
       <TextBody>
         You can also try them out now. <br />
         If you open{" "}
-        <Link href="http://localhost:654/currentUser" target="_blank">
+        <ExternalLink href="http://localhost:654/currentUser" target="_blank">
           http://localhost:654/currentUser
-        </Link>
+        </ExternalLink>
         , you'll see that by default you will be a Visitor user without roles.
         You can authenticate your request in two ways in this example
         application - both can be achieved easily with&nbsp;
-        <Link href="https://www.getpostman.com/" target="_blank">
+        <ExternalLink href="https://www.getpostman.com/" target="_blank">
           Postman
-        </Link>
+        </ExternalLink>
         .
         <ul>
           <li>
@@ -239,9 +239,9 @@ export class HelloWorldAction implements IRequestAction {
   })`}
         />
         Restart your application and send a request to{" "}
-        <Link href="http://localhost:654" target="_blank">
+        <ExternalLink href="http://localhost:654" target="_blank">
           http://localhost:654
-        </Link>
+        </ExternalLink>
         . You will get a plain text response with the 'Hello Visitor!' text from
         your newly created action.
       </TextBody>
@@ -262,16 +262,19 @@ export class HelloWorldAction implements IRequestAction {
       </TextBody>
       <TextBody>
         The following example is also available in{" "}
-        <Link
+        <ExternalLink
           href="https://github.com/furystack/hello-world-app"
           target="_blank"
         >
           this
-        </Link>{" "}
+        </ExternalLink>{" "}
         Github repository, or you can check it online in{" "}
-        <a href="https://glitch.com/~furystack-hello-world-app" target="_blank">
+        <ExternalLink
+          href="https://glitch.com/~furystack-hello-world-app"
+          target="_blank"
+        >
           Glitch
-        </a>
+        </ExternalLink>
         .
       </TextBody>
       <TextBody>

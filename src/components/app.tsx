@@ -6,6 +6,7 @@ import { ThemeContext } from "../context/theme-context";
 import { GettingStarted } from "../pages/getting-started";
 import { Guide } from "../pages/guide";
 import { GuideDataStores } from "../pages/guide-data-stores";
+import { GuideHttpApi } from "../pages/guide-http-api";
 import { GuideInject } from "../pages/guide-inject";
 import { GuideRepository } from "../pages/guide-repository";
 import { Home } from "../pages/home";
@@ -62,6 +63,9 @@ export const App: React.FunctionComponent = () => {
                     </Route>
                     <Route path="/guide/repository">
                       <GuideRepository />
+                    </Route>
+                    <Route path="/guide/http-api">
+                      <GuideHttpApi />
                     </Route>
                     <Route>
                       <Home />

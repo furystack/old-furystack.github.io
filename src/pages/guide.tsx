@@ -1,6 +1,7 @@
 import Typography from "@material-ui/core/Typography";
 import React, { useContext } from "react";
-import { Link } from "../components/link";
+import { ExternalLink } from "../components/external-link";
+import { InternalLink } from "../components/internal-link";
 import { Subheader } from "../components/subheader";
 import { TextBody } from "../components/text-body";
 import { ThemeContext } from "../context/theme-context";
@@ -9,37 +10,48 @@ export const Guide: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
   return (
     <div style={{ width: "calc(100% - 2em)" }}>
-      <Typography variant="h5" style={{ color: theme.palette.text.primary }}>
-        📜Guide
+      <Typography
+        variant="h3"
+        style={{ color: theme.palette.text.primary }}
+        gutterBottom={true}
+      >
+        Guide to the layers of Fury
       </Typography>
-      <Subheader href="/guide/inject">
-        DI / IOC with @furystack/inject 💉
-      </Subheader>
       <TextBody>
-        <Link
+        This little guide will hopefully help you to understand what FuryStack
+        is (and what is not...), explain the core concepts of the APIs and the
+        packages, why is it soo coool, opens up your third eye and helps your
+        soul's salvation. <br /> There is no silver bullet so don't take it too
+        seriously &nbsp; 🖤
+      </TextBody>
+      <Subheader href="/guide/inject">Dependency injection 💉</Subheader>
+      <TextBody>
+        <ExternalLink
           href="https://en.wikipedia.org/wiki/Dependency_injection"
           target="_blank"
         >
           Dependency injection
-        </Link>{" "}
+        </ExternalLink>{" "}
         and{" "}
-        <Link
+        <ExternalLink
           href="https://en.wikipedia.org/wiki/Inversion_of_control"
           target="_blank"
         >
           Inversion of control
-        </Link>{" "}
+        </ExternalLink>{" "}
         is a common practice that tries to protect you from insanity that would
         happen when you realize that you can't refactor and test a giant global
         static app structure.{" "}
-        <Link
+        <ExternalLink
           href="https://www.npmjs.com/package/@furystack/inject"
           target="_blank"
         >
           @furystack/inject
-        </Link>{" "}
+        </ExternalLink>{" "}
         is a simple but powerful tool that you can use in NodeJs and in the
-        browser. <Link href="/guide/inject">Learn more...</Link>
+        browser. An extendable fluent API is also attached to injectors - you
+        can configure almost your whole stack with it. &nbsp;
+        <InternalLink to="/guide/inject">Learn more...</InternalLink>
       </TextBody>
 
       <Subheader href="/guide/data-stores/">Data Stores 📦</Subheader>
@@ -50,7 +62,7 @@ export const Guide: React.FunctionComponent = () => {
         Redis, in a file system and for plain in-memory store - or you can
         implement your own PhysicalStore - it won't be so hard. You can also use
         multiple store types per app. &nbsp;
-        <Link href="/guide/data-stores">Learn more...</Link>
+        <InternalLink to="/guide/data-stores">Learn more...</InternalLink>
       </TextBody>
 
       <Subheader href="/guide/repository">Repository 🧬</Subheader>
@@ -60,16 +72,24 @@ export const Guide: React.FunctionComponent = () => {
         configured physical store. The difference is that while PhysicalStore
         focuses on the data, DataSet focuses on business logic. You can
         authorize, check permissions, subscribe to entity changes, etc... &nbsp;
-        <Link href="/guide/repository">Learn more...</Link>
+        <InternalLink to="/guide/repository">Learn more...</InternalLink>
       </TextBody>
 
-      <Subheader href="">More docs are coming soon about</Subheader>
+      <Subheader href="/guide/http-api">Http API 🕸</Subheader>
+      <TextBody>
+        You can work with data, you can implement some business logic, it's time
+        to communicate with the rest of the world. The straightforward answer is
+        HTTP, so let's make some custom actions, configure routing and take a
+        look at the built-in HTTP authentication. &nbsp;
+        <InternalLink to="/guide/http-api">Learn more...</InternalLink>
+      </TextBody>
+
+      <Subheader href="">More docs are coming soon</Subheader>
       <Typography>
         <ul>
-          <li>🕸/http-api </li>
-          <li>✨/odata </li>
-          <li>💬/websocket-api </li>
-          <li>📃/logging </li>
+          <li>✨ OData </li>
+          <li>💬 Websocket-api </li>
+          <li>📃 Logging </li>
         </ul>
       </Typography>
     </div>

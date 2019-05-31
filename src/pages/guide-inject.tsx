@@ -2,7 +2,8 @@ import Typography from "@material-ui/core/Typography";
 import React, { useContext } from "react";
 import { CodeSnippet } from "../components/code-snippet";
 import { CodeTextArea } from "../components/code-text-area";
-import { Link } from "../components/link";
+import { ExternalLink } from "../components/external-link";
+import { InternalLink } from "../components/internal-link";
 import { Subheader } from "../components/subheader";
 import { TextBody } from "../components/text-body";
 import { ThemeContext } from "../context/theme-context";
@@ -21,20 +22,20 @@ export const GuideInject: React.FunctionComponent = () => {
       <TextBody>
         FuryStack is heavily built on DI and IOC concepts. It has an own DI/IOC
         implementation that sits in the{" "}
-        <Link
+        <ExternalLink
           href="https://www.npmjs.com/package/@furystack/inject"
           target="_blank"
         >
           @furystack/inject
-        </Link>{" "}
+        </ExternalLink>{" "}
         NPM package. You can use the full functionality in NodeJs and in the
         browser as well, even in a{" "}
-        <Link
+        <ExternalLink
           href="https://github.com/gallayl/redux-di-middleware"
           target="_blank"
         >
           Redux middleware
-        </Link>
+        </ExternalLink>
         😉 <br />
         The installation is quite straightforward, you can run{" "}
         <CodeSnippet>npm i @furystack/inject</CodeSnippet> or{" "}
@@ -131,15 +132,15 @@ expect(injector.getInstance(Service1).service2.value).toBe('bar')`}
         methods usually provides a shortcut of an instance or sets up a
         preconfigured explicit instance of a service. You can build clean and
         nice fluent API-s in that way - you can check a{" "}
-        <Link
+        <ExternalLink
           href="https://github.com/furystack/furystack/blob/master/packages/logging/src/InjectorExtension.ts"
           target="_blank"
         >
           code example
-        </Link>{" "}
+        </ExternalLink>{" "}
         or take a look at the{" "}
-        <Link href="/getting-started">Getting stated</Link> guide to check the
-        result.
+        <InternalLink to="/getting-started">Getting stated</InternalLink> guide
+        to check the result.
       </TextBody>
 
       <Subheader href="#misc">A few things to care about</Subheader>
@@ -160,19 +161,19 @@ expect(injector.getInstance(Service1).service2.value).toBe('bar')`}
       </TextBody>
       <TextBody>
         The package is available on{" "}
-        <Link
+        <ExternalLink
           href="https://github.com/furystack/furystack/tree/master/packages/inject"
           target="_blank"
         >
           GitHub
-        </Link>{" "}
+        </ExternalLink>{" "}
         and can be downloaded from{" "}
-        <Link
+        <ExternalLink
           href="https://www.npmjs.com/package/@furystack/inject"
           target="_blank"
         >
           NPM
-        </Link>
+        </ExternalLink>
         . Use it, love it. Don't hesitate to leave a feedback, a suggestion or
         just say Hi.
       </TextBody>

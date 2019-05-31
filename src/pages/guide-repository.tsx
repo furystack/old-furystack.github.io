@@ -2,7 +2,7 @@ import Typography from "@material-ui/core/Typography";
 import React, { useContext } from "react";
 import { CodeSnippet } from "../components/code-snippet";
 import { CodeTextArea } from "../components/code-text-area";
-import { Link } from "../components/link";
+import { ExternalLink } from "../components/external-link";
 import { Subheader } from "../components/subheader";
 import { TextBody } from "../components/text-body";
 import { ThemeContext } from "../context/theme-context";
@@ -63,12 +63,12 @@ dataSet.add(myInjector, {key: 1, value: 'asd'}) // Will pass and will be logged 
         entity to be added. <br />
         There are several methods that you can use for authorizing CRUD
         operations. You can check the{" "}
-        <Link
+        <ExternalLink
           href="https://github.com/furystack/furystack/blob/master/packages/repository/src/DataSetSettings.ts"
           target="_blank"
         >
           DataSet Settings
-        </Link>{" "}
+        </ExternalLink>{" "}
         to get the idea.
       </TextBody>
       <Subheader href="#events">Events</Subheader>
