@@ -1,11 +1,11 @@
 import Typography from "@material-ui/core/Typography";
 import React, { useContext } from "react";
+import { CodeSnippet } from "../components/code-snippet";
+import { CodeTextArea } from "../components/code-text-area";
 import { Link } from "../components/link";
 import { Subheader } from "../components/subheader";
 import { TextBody } from "../components/text-body";
 import { ThemeContext } from "../context/theme-context";
-import { CodeSnippet } from "../components/code-snippet";
-import { CodeTextArea } from "../components/code-text-area";
 
 export const GuideDataStores: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
@@ -33,9 +33,15 @@ export const GuideDataStores: React.FunctionComponent = () => {
         is a bare minimum interface that a store should do. A store is always
         bound to a collection with a specified type of entities. It can only do
         the basic CRUD operations (create, get by Id, filter, delete, count).
-        These stores should not have a concept about relations, indexes and
-        other storage-specific stuff. Data stores doesn't care about permission,
-        role or session checking.
+        These stores{" "}
+        <strong>
+          should not have a concept about relations, indexes and other
+          storage-specific stuff
+        </strong>
+        . Data stores{" "}
+        <strong>
+          doesn't care about permission, role or session checking.
+        </strong>
       </TextBody>
 
       <Subheader href="#store-setup">Setting up stores</Subheader>
