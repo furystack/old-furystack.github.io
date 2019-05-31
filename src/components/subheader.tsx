@@ -16,8 +16,7 @@ const Subheader: React.FunctionComponent<
       console.log(elementRef.current);
       elementRef.current.scrollIntoView({
         behavior: "smooth",
-        block: "start",
-        inline: "start"
+        block: "start"
       });
     }
   }, [location.hash]);

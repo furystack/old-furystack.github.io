@@ -7,6 +7,7 @@ import { GettingStarted } from "../pages/getting-started";
 import { Guide } from "../pages/guide";
 import { GuideDataStores } from "../pages/guide-data-stores";
 import { GuideInject } from "../pages/guide-inject";
+import { GuideRepository } from "../pages/guide-repository";
 import { Home } from "../pages/home";
 import { MainAppBar } from "./main-app-bar";
 
@@ -59,7 +60,9 @@ export const App: React.FunctionComponent = () => {
                     <Route path="/guide/data-stores">
                       <GuideDataStores />
                     </Route>
-
+                    <Route path="/guide/repository">
+                      <GuideRepository />
+                    </Route>
                     <Route>
                       <Home />
                     </Route>

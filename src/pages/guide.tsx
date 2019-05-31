@@ -53,10 +53,20 @@ export const Guide: React.FunctionComponent = () => {
         <Link href="/guide/data-stores">Learn more...</Link>
       </TextBody>
 
+      <Subheader href="/guide/repository">Repository 🧬</Subheader>
+      <TextBody>
+        A Repository is the next layer above the data stores. When setting up a
+        repository, you can create <i>DataSets</i> that can use a previously
+        configured physical store. The difference is that while PhysicalStore
+        focuses on the data, DataSet focuses on business logic. You can
+        authorize, check permissions, subscribe to entity changes, etc... &nbsp;
+        <Link href="/guide/repository">Learn more...</Link>
+      </TextBody>
+
       <Subheader href="">More docs are coming soon about</Subheader>
       <Typography>
         <ul>
-          <li>🧬/repository </li>
+          <li>/repository </li>
           <li>🕸/http-api </li>
           <li>✨/odata </li>
           <li>💬/websocket-api </li>
