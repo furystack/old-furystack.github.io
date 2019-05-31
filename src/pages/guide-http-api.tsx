@@ -1,6 +1,7 @@
 import Typography from "@material-ui/core/Typography";
 import React, { useContext } from "react";
 import { CodeSnippet } from "../components/code-snippet";
+import { CodeTextArea } from "../components/code-text-area";
 import { ExternalLink } from "../components/external-link";
 import { InternalLink } from "../components/internal-link";
 import { Subheader } from "../components/subheader";
@@ -58,10 +59,62 @@ export const GuideHttpApi: React.FunctionComponent = () => {
           ServerResponse
         </ExternalLink>{" "}
         is the NodeJs "response" object that will be sent to the client. You
-        will have full control on both of them in the actions.
+        will have full control on both of them in the actions. Here's an example
+        (taken from the{" "}
+        <ExternalLink
+          href="https://github.com/furystack/hello-world-app"
+          target="_blank"
+        >
+          Hello World app
+        </ExternalLink>
+        )
+        <CodeTextArea
+          value={`
+import { IRequestAction, HttpUserContext } from "@furystack/http-api";
+import { Injectable } from "@furystack/inject";
+import { ServerResponse } from "http";
+
+@Injectable({ lifetime: "transient" })
+export class HelloWorldAction implements IRequestAction {
+  public dispose() {
+    /** all actions should be disposables, you can implement cleanup logic here. */
+  }
+
+  public async exec(): Promise<void> {
+    const currentUser = await this.userContext.getCurrentUser();
+    this.response.end(\`Hello \${currentUser.username}!\`);
+  }
+
+  /** The parameters from the constructor will be injected */
+  constructor(
+    private readonly userContext: HttpUserContext,
+    private readonly response: ServerResponse
+  ) {}
+}
+
+        `}
+        />
       </TextBody>
       <Subheader href="#custom-actions">Routing</Subheader>
+      <TextBody>
+        There is a simple yet powerful routing mechanism that works with the{" "}
+        <CodeSnippet>.addHttpRouting()</CodeSnippet> extension method on the
+        Injector. Each and every statement will add a <i>routing strategy</i>.
+        These callbacks will be fired with the actual IncomingMessage object and
+        should return a CustomAction constructor on hit. <br />
+        <strong>Warning: The order matters!</strong> The first strategy that has
+        a hit, will take the request.
+      </TextBody>
       <Subheader href="#authentication">Authentication</Subheader>
+      <TextBody>
+        You can configure the HTTP authentication with the{" "}
+        <CodeSnippet>.useHttpAuthentication()</CodeSnippet> extension method.
+        You can also define whitch store to use for sessions and for users.{" "}
+        <br />
+        There is also an extension method to set up the default session routes
+        (.useDefaultLoginRoutes()), it registers routes for '/login', '/logout'
+        and '/currentUser'
+      </TextBody>
     </div>
   );
 };
