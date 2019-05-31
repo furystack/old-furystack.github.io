@@ -1,15 +1,31 @@
 import Typography from "@material-ui/core/Typography";
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import React from "react";
+import { RouteComponentProps, withRouter } from "react-router";
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/theme-context";
-export const Subheader: React.FunctionComponent<{ href: string }> = ({
-  href,
-  children
-}) => {
+
+const Subheader: React.FunctionComponent<
+  { href: string } & RouteComponentProps
+> = ({ href, children, location }) => {
   const theme = useContext(ThemeContext);
+  const elementRef = useRef<null | HTMLElement>(null);
+
+  useEffect(() => {
+    if (elementRef.current && window.location.hash === href) {
+      console.log(elementRef.current);
+      elementRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "start"
+      });
+    }
+  }, [location.hash]);
+
   return (
-    <Link href={href} style={{ textDecoration: "none" }}>
+    <Link to={href} style={{ textDecoration: "none" }}>
       <Typography
+        ref={elementRef}
         variant="h4"
         style={{ color: theme.palette.text.primary, marginTop: "1em" }}
         gutterBottom={true}
@@ -17,6 +33,10 @@ export const Subheader: React.FunctionComponent<{ href: string }> = ({
       >
         {children}
       </Typography>
-    </a>
+    </Link>
   );
 };
+
+const routed = withRouter(Subheader);
+
+export { routed as Subheader };
