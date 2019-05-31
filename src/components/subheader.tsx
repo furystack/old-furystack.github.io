@@ -13,6 +13,7 @@ export const Subheader: React.FunctionComponent<{ href: string }> = ({
         variant="h4"
         style={{ color: theme.palette.text.primary, marginTop: "1em" }}
         gutterBottom={true}
+        id={href.startsWith("#") ? href.substr(1) : undefined}
       >
         {children}
       </Typography>

@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ThemeContext } from "../context/theme-context";
 import { GettingStarted } from "../pages/getting-started";
 import { Guide } from "../pages/guide";
+import { GuideDataStores } from "../pages/guide-data-stores";
 import { GuideInject } from "../pages/guide-inject";
 import { Home } from "../pages/home";
 import { MainAppBar } from "./main-app-bar";
@@ -55,6 +56,10 @@ export const App: React.FunctionComponent = () => {
                     <Route path="/guide/inject">
                       <GuideInject />
                     </Route>
+                    <Route path="/guide/data-stores">
+                      <GuideDataStores />
+                    </Route>
+
                     <Route>
                       <Home />
                     </Route>

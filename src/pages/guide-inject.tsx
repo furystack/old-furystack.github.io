@@ -11,8 +11,12 @@ export const GuideInject: React.FunctionComponent = () => {
   const theme = useContext(ThemeContext);
   return (
     <div style={{ width: "calc(100% - 2em)" }}>
-      <Typography variant="h3" style={{ color: theme.palette.text.primary }}>
-        @furystack/inject 💉
+      <Typography
+        variant="h3"
+        style={{ color: theme.palette.text.primary }}
+        gutterBottom={true}
+      >
+        DI / IOC with @furystack/inject 💉
       </Typography>
       <TextBody>
         FuryStack is heavily built on DI and IOC concepts. It has an own DI/IOC
