@@ -8,7 +8,7 @@ export const Subheader: React.FunctionComponent<{ href: string }> = ({
 }) => {
   const theme = useContext(ThemeContext);
   return (
-    <a href={href} style={{ textDecoration: "none" }}>
+    <Link href={href} style={{ textDecoration: "none" }}>
       <Typography
         variant="h4"
         style={{ color: theme.palette.text.primary, marginTop: "1em" }}
