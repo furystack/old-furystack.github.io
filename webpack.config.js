@@ -1,6 +1,6 @@
 var path = require("path");
 // const webpack = require('webpack')
-// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+// const BundleAnalyzerPlugin = require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TsConfigWebpackPlugin = require("ts-config-webpack-plugin");
 

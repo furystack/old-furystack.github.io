@@ -1,4 +1,4 @@
-import Typography from "@material-ui/core/Typography";
+import { Typography } from "@material-ui/core";
 import React, { useContext } from "react";
 import { CodeSnippet } from "../components/code-snippet";
 import { CodeTextArea } from "../components/code-text-area";
