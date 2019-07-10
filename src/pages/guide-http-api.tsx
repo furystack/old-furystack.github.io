@@ -32,16 +32,16 @@ export const GuideHttpApi: React.FunctionComponent = () => {
       </TextBody>
       <Subheader href="#custom-actions">Custom actions</Subheader>
       <TextBody>
-        Custom Actions are simple injectable classes that should implement the{" "}
+        Custom Actions are simple methods with the type of{" "}
         <ExternalLink
-          href="https://github.com/furystack/furystack/blob/master/packages/http-api/src/Models/IRequestAction.ts"
+          href="https://github.com/furystack/furystack/blob/master/packages/http-api/src/Models/RequestAction.ts"
           target="_blank"
         >
-          IRequestAction
-        </ExternalLink>{" "}
-        interface. They should be transient services. The framework will
-        instantiate them and call their <CodeSnippet>exec()</CodeSnippet> method
-        on a route hit. They can have a dispose() method for cleanup as well.{" "}
+          RequestAction
+        </ExternalLink>
+        . It will be called with an Injector instance and should return an
+        ActionResult object. The HTTP API framework will call them on a route
+        hit.
         <br />
         There are two important variable that can be injected and{" "}
         <i>will be used often</i> in custom actions: The{" "}
@@ -69,30 +69,19 @@ export const GuideHttpApi: React.FunctionComponent = () => {
         </ExternalLink>
         )
         <CodeTextArea
-          value={`
-import { IRequestAction, HttpUserContext } from "@furystack/http-api";
-import { Injectable } from "@furystack/inject";
-import { ServerResponse } from "http";
+          value={`import {
+  PlainTextResult,
+  RequestAction,
+  HttpUserContext
+} from "@furystack/http-api";
 
-@Injectable({ lifetime: "transient" })
-export class HelloWorldAction implements IRequestAction {
-  public dispose() {
-    /** all actions should be disposables, you can implement cleanup logic here. */
-  }
-
-  public async exec(): Promise<void> {
-    const currentUser = await this.userContext.getCurrentUser();
-    this.response.end(\`Hello \${currentUser.username}!\`);
-  }
-
-  /** The parameters from the constructor will be injected */
-  constructor(
-    private readonly userContext: HttpUserContext,
-    private readonly response: ServerResponse
-  ) {}
-}
-
-        `}
+export const HelloWorldAction: RequestAction = async injector => {
+  const currentUser = await injector
+    .getInstance(HttpUserContext)
+    .getCurrentUser();
+  return PlainTextResult(\`Hello \${currentUser.username}!\`);
+};
+ `}
         />
       </TextBody>
       <Subheader href="#custom-actions">Routing</Subheader>
@@ -100,8 +89,8 @@ export class HelloWorldAction implements IRequestAction {
         There is a simple yet powerful routing mechanism that works with the{" "}
         <CodeSnippet>.addHttpRouting()</CodeSnippet> extension method on the
         Injector. Each and every statement will add a <i>routing strategy</i>.
-        These callbacks will be fired with the actual IncomingMessage object and
-        should return a CustomAction constructor on hit. <br />
+        These callbacks will be fired with the actual injector object and should
+        return a RequestAction method declaration on hit. <br />
         <strong>Warning: The order matters!</strong> The first strategy that has
         a hit, will take the request.
       </TextBody>
