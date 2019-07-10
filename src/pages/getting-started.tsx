@@ -104,14 +104,7 @@ export const GettingStarted: React.FunctionComponent = () => {
         And now, the code snippet:
       </TextBody>
       <CodeTextArea
-        value={`import { Injector } from "@furystack/inject";
-import { ConsoleLogger } from "@furystack/logging";
-import { User, StoreManager } from "@furystack/core";
-import { HttpAuthenticationSettings } from "@furystack/http-api";
-import { HelloWorldAction } from "./hello-world-action";
-import { parse } from "url";
-
-const injector = new Injector()
+        value={`const injector = new Injector()
   .useLogging(ConsoleLogger)
   .useHttpApi()
   .useHttpAuthentication()
@@ -129,8 +122,7 @@ injector
     username: "testuser",
     roles: [],
     password: authSettings.hashMethod("testPassword")
-  } as User);
-`}
+  } as User);`}
       />
       <TextBody>
         Now, after saving your index.ts file, you can start the server with the
@@ -193,27 +185,19 @@ injector
         application (ctrl+c in the console) and create a new file called
         'hello-world-action.ts' next to your 'index.ts':
         <CodeTextArea
-          value={`import { IRequestAction, HttpUserContext } from "@furystack/http-api";
-import { Injectable } from "@furystack/inject";
-import { ServerResponse } from "http";
-           
-@Injectable({ lifetime: "transient" })
-export class HelloWorldAction implements IRequestAction {
-  public dispose() {
-    /** all actions should be disposables, you can implement cleanup logic here. */
-  }
+          value={`import {
+  PlainTextResult,
+  RequestAction,
+  HttpUserContext
+} from "@furystack/http-api";
 
-  public async exec(): Promise<void> {
-    const currentUser = await this.userContext.getCurrentUser();
-    this.response.end(\`Hello \${currentUser.username}!\`);
-  }
-
-  /** The parameters from the constructor will be injected */
-  constructor(
-    private readonly userContext: HttpUserContext,
-    private readonly response: ServerResponse
-  ) {}
-}`}
+export const HelloWorldAction: RequestAction = async injector => {
+  const currentUser = await injector
+    .getInstance(HttpUserContext)
+    .getCurrentUser();
+  return PlainTextResult(\`Hello \${currentUser.username}!\`);
+};
+`}
         />
         The action implementation is quite straightforward. We should implement
         an IRequestAction (dispose() and exec() is mandatory). We can use
@@ -231,8 +215,8 @@ export class HelloWorldAction implements IRequestAction {
         at the top of our index.ts and add the following snippet right after{" "}
         <code>'.useDefaultLoginRoutes()'</code>:
         <CodeTextArea
-          value={`  .addHttpRouting(msg => {
-    const urlPathName = parse(msg.url || "", true).pathname;
+          value={`    .addHttpRouting(i => {
+    const urlPathName = parse(i.getRequest().url || "", true).pathname;
     if (urlPathName === "/helloWorld") {
       return HelloWorldAction;
     }
@@ -251,9 +235,9 @@ export class HelloWorldAction implements IRequestAction {
         <ul>
           <li>
             A basic backend application with an in-memory store, logging,
-            authentication and custom routing - from about ~35 lines of code
+            authentication and custom routing - from about ~32 lines of code
           </li>
-          <li>A custom HelloWorld action - from about ~21 lines of code</li>
+          <li>A custom HelloWorld action - from about ~12 lines of code</li>
         </ul>
         One of the main goal of FuryStack is to give a clean and
         easy-to-understand, but also flexible and expandable API set for
