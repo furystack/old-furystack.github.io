@@ -1,0 +1,40 @@
+# Node.js
+
+# Build a general Node.js project with npm.
+# Add steps that analyze code, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
+
+trigger:
+  - develop
+  - feature/*
+  - release/*
+  - greenkeeper/*
+
+pool:
+  vmImage: "ubuntu-latest"
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "12.x"
+    displayName: "Install Node.js"
+  - script: yarn install
+    displayName: "Yarn install"
+
+  - script: yarn lint
+    displayName: "Yarn Lint"
+
+  - script: yarn workspace frontend build
+    displayName: "Build Frontend"
+  - task: ArchiveFiles@1
+    displayName: Compress frontend artifacts
+    inputs:
+      archiveFile: $(System.DefaultWorkingDirectory)/frontend.zip
+      rootFolder: "$(System.DefaultWorkingDirectory)/frontend/bundle"
+      includeRootFolder: false
+
+  - task: PublishBuildArtifacts@1
+    displayName: Publish frontend bundle artifacts
+    inputs:
+      pathtoPublish: "$(System.DefaultWorkingDirectory)/frontend.zip"
+      artifactName: frontend
