@@ -30,5 +30,5 @@ steps:
     displayName: Compress frontend artifacts
     inputs:
       archiveFile: $(System.DefaultWorkingDirectory)/frontend.zip
-      rootFolder: "$(System.DefaultWorkingDirectory)/frontend/bundle"
+      rootFolder: "$(System.DefaultWorkingDirectory)/bundle/assets"
       includeRootFolder: false
