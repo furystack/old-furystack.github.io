@@ -24,7 +24,7 @@ steps:
   - script: yarn lint
     displayName: "Yarn Lint"
 
-  - script: yarn workspace frontend build
+  - script: yarn build:webpack
     displayName: "Build Frontend"
   - task: ArchiveFiles@1
     displayName: Compress frontend artifacts
@@ -32,9 +32,3 @@ steps:
       archiveFile: $(System.DefaultWorkingDirectory)/frontend.zip
       rootFolder: "$(System.DefaultWorkingDirectory)/frontend/bundle"
       includeRootFolder: false
-
-  - task: PublishBuildArtifacts@1
-    displayName: Publish frontend bundle artifacts
-    inputs:
-      pathtoPublish: "$(System.DefaultWorkingDirectory)/frontend.zip"
-      artifactName: frontend
