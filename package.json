@@ -86,7 +86,7 @@
     "react-responsive": "^8.0.1",
     "react-syntax-highlighter": "^11.0.2",
     "semaphore-async-await": "^1.5.1",
-    "uuid": "^3.3.2"
+    "uuid": "^7.0.0"
   },
   "typings": "./dist/index.d.ts"
 }
